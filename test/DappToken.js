@@ -50,7 +50,7 @@ contract('DappToken',function(accounts) {
 			 return tokenInstance.transfer.call(accounts[1], 999999999999999999);
 			 
 			}).then(assert.fail).catch(function(error) {
-//				assert(error.message.toString().indexOf('revert' >=0, 'error message must contain revert'));
+				assert(error.message.toString().indexOf('revert') >=0, 'error message must contain revert');
 //the above line is failing. i add .toString() but just comment it out for now ?????				
 				return tokenInstance.transfer.call(accounts[1],250000, {from: accounts[0]});
 			}).then(function(success) {
@@ -121,7 +121,7 @@ contract('DappToken',function(accounts) {
 
 			return tokenInstance.transferFrom(fromAccount,toAccount, 20, {from: spendingAcount});
 			}).then(assert.fail).catch(function(error) { 
-// 				assert(error.message.toString().indexOf('revert') >=0,'cannot transfer value larger than approved amountXXX');
+	assert(error.message.toString().indexOf('revert') >=0,'cannot transfer value larger than approved amountXXX');
 //the above line is failing. i add .toString() but just comment it out for now ?????
 
                return tokenInstance.transferFrom.call(fromAccount, toAccount,10, {from: spendingAccount});

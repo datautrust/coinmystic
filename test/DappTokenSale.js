@@ -81,7 +81,7 @@ contract('DappTokenSale',function(accounts){
 		 //try to end sale from account other than the admin
 			return tokenSaleInstance.endSale({from: buyer});
 		}).then(assert.fail).catch(function(error) {
-			assert(error.message.toString().indexOf('revert' >=0, 'must be admin to end sale'));
+			assert(error.message.toString().indexOf('revert') >=0, 'must be admin to end sale');
 			//end sale as admin
 			return tokenSaleInstance.endSale({from: admin});
 			
@@ -92,9 +92,9 @@ contract('DappTokenSale',function(accounts){
 			assert.equal(balance.toNumber(),999990,'returns all unsold dapp tokens to admin');
 			//check that token price is reset when selfDestruct was called
 			balance = web3.eth.getBalance(tokenSaleInstance.address);
-			return tokenSaleInstance.tokenPrice();
+//			return tokenSaleInstance.tokenPrice();
 //x i had to remove lines with x to make it work???
- //x          assert.equal(balance.toNumber(),0);
+           assert.equal(balance.toNumber(),0);
 		});
 //x		}).then(function(price)
 //x		 {assert.equal(price.toNumber(),0,'token price was reset');
